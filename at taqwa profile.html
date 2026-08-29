@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musholla At Taqwa</title>
+    <style>
+        /* --------------------------------------------------------------
+           RESET & BASE STYLES
+        -------------------------------------------------------------- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Background menggunakan file bernama bg.png */
+            background: url('bg.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --------------------------------------------------------------
+           MOBILE FIRST STYLES (Default / Tampilan Mobile)
+        -------------------------------------------------------------- */
+        
+        /* Header Top Bar Mobile */
+        .mobile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background-color: rgba(10, 25, 22, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Tombol Toggle Menu Mobile */
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Icon menggunakan file bernama icon.png */
+        .menu-icon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Navbar Mobile (Tersembunyi secara bawaan) */
+        .sidebar-nav {
+            position: fixed;
+            top: 0;
+            left: -280px; /* Sembunyi di kiri luar layar */
+            width: 280px;
+            height: 100vh;
+            /* Warna transparan dengan efek blur kaca modern */
+            background-color: rgba(10, 30, 26, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 200;
+            transition: left 0.3s ease;
+            padding: 20px;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Class pemicu saat navbar dibuka lewat JS */
+        .sidebar-nav.active {
+            left: 0;
+        }
+
+        /* Header internal di dalam navbar (termasuk tombol close) */
+        .nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        /* Logo kecil di pojok kiri atas navbar saat terbuka */
+        .logo-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #d4af37;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* Menu Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #d4af37;
+            background-color: rgba(212, 175, 55, 0.1);
+            padding-left: 20px;
+        }
+
+        /* Overlay gelap saat navbar mobile terbuka */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 150;
+            display: none;
+        }
+
+        .nav-overlay.active {
+            display: block;
+        }
+
+        /* Area Konten Utama Mobile */
+        .main-content {
+            padding: 100px 20px 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Penempatan gambar utama dalam konten */
+        .hero-image-wrapper {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+
+        /* --------------------------------------------------------------
+           DESKTOP STYLES (Lebar Layar 768px ke atas)
+        -------------------------------------------------------------- */
+        @media screenInput and (min-width: 768px) {
+            /* Sembunyikan top bar mobile */
+            .mobile-header {
+                display: none;
+            }
+
+            /* Sembunyikan overlay */
+            .nav-overlay.active {
+                display: none;
+            }
+
+            /* Transformasi Navbar menjadi PATEN di samping kiri */
+            .sidebar-nav {
+                left: 0 !important; /* Paksa selalu tampil di kiri */
+                width: 260px;
+                background-color: rgba(10, 25, 22, 0.9); /* Solid / Sedikit transparan elegan */
+                box-shadow: 2px 0 20px rgba(0,0,0,0.5);
+            }
+
+            /* Sembunyikan tombol close karena di desktop sifatnya paten */
+            .close-btn {
+                display: none;
+            }
+
+            /* Atur posisi logo tetap manis di pojok kiri atas sidebar */
+            .nav-header {
+                margin-bottom: 50px;
+                justify-content: flex-start;
+            }
+
+            /* Konten Utama bergeser ke kanan menyesuaikan lebar navbar paten */
+            .main-content {
+                margin-left: 260px;
+                padding: 40px;
+            }
+
+            /* Mode Desktop: Gambar diatur benar-benar di tengah layar konten */
+            .hero-image-wrapper {
+                max-width: 600px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- OVERLAY (Hanya fungsi di mobile) -->
+    <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+
+    <!-- MOBILE HEADER TOP BAR -->
+    <header class="mobile-header">
+        <!-- Logo kecil kiri atas saat di mobile (sebelum menu dibuka) -->
+        <div class="logo-box">
+            <img src="image_iKhgxm.png" alt="Logo" class="logo-img">
+        </div>
+        <!-- Tombol Icon Buka Menu -->
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Buka Menu">
+            <img src="icon.png" alt="Menu" class="menu-icon-img">
+        </button>
+    </header>
+
+    <!-- SIDEBAR NAVBAR (Paten di desktop, Slide-in & Transparan di mobile) -->
+    <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-header">
+            <!-- Logo kecil pojok kiri atas saat navbar terbuka (Mobile & Desktop) -->
+            <div class="logo-box">
+                <img src="image_iKhgxm.png" alt="Logo At Taqwa" class="logo-img">
+            </div>
+            <!-- Tombol Tutup Menu (Hanya muncul di mobile) -->
+            <button class="close-btn" onclick="toggleMenu()">&times;</button>
+        </div>
+
+        <!-- Daftar Menu Navigasi -->
+        <ul class="nav-links">
+            <li><a href="#" class="active">Beranda</a></li>
+            <li><a href="#">Profil</a></li>
+            <li><a href="#">Jadwal Sholat</a></li>
+            <li><a href="#">Kegiatan</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- AREA KONTEN UTAMA -->
+    <main class="main-content">
+        <!-- Di Desktop: Gambar otomatis berada di tengah halaman konten -->
+        <div class="hero-image-wrapper">
+            <img src="image_iKhgxm.png" alt="Musholla At Taqwa Banner">
+        </div>
+    </main>
+
+    <!-- JAVASCRIPT UNTUK OPERASI TOGGLE DI MOBILE -->
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebarNav');
+            const overlay = document.getElementById('navOverlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
