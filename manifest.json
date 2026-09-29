@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-01-15",
+  "base_url": "https://bangsukrai99ch-star.github.io/At-Taqwa-Profile",
+  "kitab": [
+    {
+      "id": "fathul-bari",
+      "nama": "Fathul Bari",
+      "penulis": "Ibnu Hajar Al-Asqalani",
+      "kategori": "hadis",
+      "deskripsi": "Syarah kitab Shahih Bukhari",
+      "jumlah_bab": 2,
+      "cover": "kitab/fathul-bari/cover.jpg",
+      "info": "kitab/fathul-bari/info.json"
+    },
+    {
+      "id": "contoh-kitab",
+      "nama": "Contoh Kitab",
+      "penulis": "Tim TuratsKu",
+      "kategori": "fiqih",
+      "deskripsi": "Kitab contoh untuk testing",
+      "jumlah_bab": 1,
+      "cover": "kitab/contoh-kitab/cover.jpg",
+      "info": "kitab/contoh-kitab/info.json"
+    }
+  ]
+}
