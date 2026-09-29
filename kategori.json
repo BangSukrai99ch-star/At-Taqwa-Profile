@@ -1,0 +1,76 @@
+{
+  "kategori": [
+    {
+      "id": "fiqih",
+      "nama": "Fiqih",
+      "icon": "menu_book",
+      "warna": "#4CAF50"
+    },
+    {
+      "id": "hadis",
+      "nama": "Hadis",
+      "icon": "auto_stories",
+      "warna": "#2196F3"
+    },
+    {
+      "id": "tafsir",
+      "nama": "Tafsir",
+      "icon": "book",
+      "warna": "#FF9800"
+    },
+    {
+      "id": "tasawuf",
+      "nama": "Tasawuf",
+      "icon": "mosque",
+      "warna": "#9C27B0"
+    },
+    {
+      "id": "nahwu",
+      "nama": "Nahwu",
+      "icon": "edit_note",
+      "warna": "#F44336"
+    },
+    {
+      "id": "sharaf",
+      "nama": "Sharaf",
+      "icon": "translate",
+      "warna": "#3F51B5"
+    },
+    {
+      "id": "aqidah",
+      "nama": "Aqidah",
+      "icon": "star",
+      "warna": "#FFC107"
+    },
+    {
+      "id": "sejarah",
+      "nama": "Sejarah",
+      "icon": "history_edu",
+      "warna": "#795548"
+    },
+    {
+      "id": "maulid",
+      "nama": "Maulid",
+      "icon": "nights_stay",
+      "warna": "#00BCD4"
+    },
+    {
+      "id": "mantiq",
+      "nama": "Mantiq",
+      "icon": "psychology",
+      "warna": "#607D8B"
+    },
+    {
+      "id": "ushul-fiqih",
+      "nama": "Ushul Fiqih",
+      "icon": "gavel",
+      "warna": "#8BC34A"
+    },
+    {
+      "id": "mustholah-hadis",
+      "nama": "Mustholah Hadis",
+      "icon": "library_books",
+      "warna": "#E91E63"
+    }
+  ]
+}
